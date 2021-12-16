@@ -12,7 +12,7 @@ namespace MiniGame
         private int _velikost { get; set; }
         private int _rychlost { get; set; }
 
-        private Color _barva { get; set; }
+        public Color _barva { get; set; }
 
         private Vector2 _pozice { get; set; }
         private Texture2D _textura { get; set; }
@@ -26,7 +26,7 @@ namespace MiniGame
 
             _ovladaniPohybu = ovladaniPohybu;
 
-            _barva = barva;
+            _barva = Color.Black;
             _pozice = pozice;
 
             _zobrazovac = zobrazovac;
@@ -58,7 +58,16 @@ namespace MiniGame
             if (klavesnice.IsKeyDown(_ovladaniPohybu.Dolu))
                 smerPohybu += Vector2.UnitY;
 
-            if (smerPohybu != Vector2.Zero)
+            if (klavesnice.IsKeyDown(_ovladaniPohybu.Dolu))
+                _barva = Color.Red;
+            if (klavesnice.IsKeyDown(_ovladaniPohybu.Nahoru))
+                _barva = Color.Yellow;
+            if (klavesnice.IsKeyDown(_ovladaniPohybu.Doprava))
+                _barva = Color.AliceBlue;
+            if (klavesnice.IsKeyDown(_ovladaniPohybu.Doleva))
+                _barva = Color.BurlyWood;
+
+                if (smerPohybu != Vector2.Zero)
                 _pozice += _rychlost * Vector2.Normalize(smerPohybu);
         }
 
